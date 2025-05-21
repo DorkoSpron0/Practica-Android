@@ -53,6 +53,6 @@ fun SecondPage() {
             modifier = Modifier.padding(horizontal = 55.dp)
         )
 
-        NavigarionTabs(2)
+        NavigarionTabs(1)
     }
 }

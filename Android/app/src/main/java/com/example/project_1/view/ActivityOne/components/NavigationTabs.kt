@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
@@ -19,26 +22,15 @@ fun NavigarionTabs(activeIndex: Int){
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
-        Box(
-            modifier = Modifier.width(10.dp)
-                .height(10.dp)
-                .background(if(activeIndex==1) Color.Red else Color.Gray)
-        ){}
-        Spacer(modifier = Modifier.width(10.dp))
+        repeat(3) { i ->
+             Box(
+                modifier = Modifier.width(12.dp)
+                    .height(12.dp)
+                    .clip(RoundedCornerShape(5.dp))
+                    .background(if(activeIndex==i) Color.Red else Color.Gray)
 
-        Box(
-            modifier = Modifier.width(10.dp)
-                .height(10.dp)
-                .background(if(activeIndex==2) Color.Red else Color.Gray)
-        ){}
-        Spacer(modifier = Modifier.width(10.dp))
-
-        Box(
-            modifier = Modifier.width(10.dp)
-                .height(10.dp)
-                .background(if(activeIndex==3) Color.Red else Color.Gray)
-        ){}
-        Spacer(modifier = Modifier.width(10.dp))
-
+            ){}
+            Spacer(modifier = Modifier.width(5.dp))
+        }
     }
 }

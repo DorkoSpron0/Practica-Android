@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,12 +29,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.project_1.R
 import com.example.project_1.view.ActivityOne.components.HeaderBibi
 import com.example.project_1.view.ActivityOne.components.NavigarionTabs
 
 @Composable
-fun ThirdPage() {
+fun ThirdPage(navController: NavController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -54,10 +56,10 @@ fun ThirdPage() {
             modifier = Modifier.padding(horizontal = 60.dp)
         )
 
-        NavigarionTabs(3)
+        NavigarionTabs(2)
 
         Button(
-            onClick = {},
+            onClick = {navController.navigate("register")},
             modifier = Modifier.fillMaxWidth().height(50.dp).padding(horizontal = 40.dp),
             colors = ButtonColors(
                 contentColor = Color.White, // -> No afecta en nada
@@ -94,6 +96,9 @@ fun ThirdPage() {
                 fontWeight = FontWeight.Bold,
                 color = Color.Red,
                 textAlign = TextAlign.Center,
+                modifier = Modifier.clickable {
+                    navController.navigate("login")
+                }
             )
         }
 

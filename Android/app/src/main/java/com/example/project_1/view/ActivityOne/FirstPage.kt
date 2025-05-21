@@ -53,6 +53,6 @@ fun FirstPage(){
             modifier = Modifier.padding(horizontal = 40.dp)
             )
 
-        NavigarionTabs(1)
+        NavigarionTabs(0)
     }
 }
