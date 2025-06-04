@@ -1,5 +1,6 @@
 package com.example.project_1.view.ActivityOne
 
+import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -24,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -35,72 +38,158 @@ import com.example.project_1.view.ActivityOne.components.HeaderBibi
 import com.example.project_1.view.ActivityOne.components.NavigarionTabs
 
 @Composable
-fun ThirdPage(navController: NavController) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
-    ) {
+fun ThirdPage(navController: NavController, configuration: Configuration = LocalConfiguration.current) {
+    when(configuration.orientation){
+        Configuration.ORIENTATION_LANDSCAPE -> {
+            LazyColumn(
+                modifier = Modifier.padding(30.dp)
+            ) {
+                item {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.SpaceEvenly
+                    ) {
 
-        HeaderBibi()
+                        HeaderBibi()
 
-        Image(modifier = Modifier.width(300.dp).height(300.dp),
-            painter = painterResource(id = R.drawable.plane),
-            contentDescription = "Description")
+                        Image(modifier = Modifier.width(300.dp).height(300.dp),
+                            painter = painterResource(id = R.drawable.plane),
+                            contentDescription = "Description")
 
-        Text(
-            text = "Get Started!",
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(horizontal = 60.dp)
-        )
+                        Spacer(modifier = Modifier.height(60.dp))
 
-        NavigarionTabs(2)
+                        Text(
+                            text = "Get Started!",
+                            textAlign = TextAlign.Center,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(horizontal = 60.dp)
+                        )
 
-        Button(
-            onClick = {navController.navigate("register")},
-            modifier = Modifier.fillMaxWidth().height(50.dp).padding(horizontal = 40.dp),
-            colors = ButtonColors(
-                contentColor = Color.White, // -> No afecta en nada
-                containerColor = Color.Transparent,
-                disabledContentColor = Color.Gray,
-                disabledContainerColor = Color.Gray
-            ),
-            border = BorderStroke(
-                width = 1.dp,
-                color = Color.Red
-            )
-        ) {
-            Text(
-                text = "Registration",
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                fontSize = 16.sp
-            )
-        }
+                        Spacer(modifier = Modifier.height(40.dp))
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = "Already have an account? ",
-                fontSize = 16.sp,
-                color = Color.Gray,
-                textAlign = TextAlign.Center,
-            )
-            Text(
-                text = " Login",
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Red,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.clickable {
-                    navController.navigate("login")
+                        NavigarionTabs(2)
+
+                        Spacer(modifier = Modifier.height(40.dp))
+
+                        Button(
+                            onClick = {navController.navigate("register")},
+                            modifier = Modifier.fillMaxWidth().height(50.dp).padding(horizontal = 40.dp),
+                            colors = ButtonColors(
+                                contentColor = Color.White, // -> No afecta en nada
+                                containerColor = Color.Transparent,
+                                disabledContentColor = Color.Gray,
+                                disabledContainerColor = Color.Gray
+                            ),
+                            border = BorderStroke(
+                                width = 1.dp,
+                                color = Color.Red
+                            )
+                        ) {
+                            Text(
+                                text = "Registration",
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 16.sp
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(60.dp))
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Already have an account? ",
+                                fontSize = 16.sp,
+                                color = Color.Gray,
+                                textAlign = TextAlign.Center,
+                            )
+                            Text(
+                                text = " Login",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.Red,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier.clickable {
+                                    navController.navigate("login")
+                                }
+                            )
+                        }
+                    }
                 }
-            )
+            }
         }
+        Configuration.ORIENTATION_PORTRAIT -> {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceEvenly
+            ) {
 
+                HeaderBibi()
+
+                Image(modifier = Modifier.width(300.dp).height(300.dp),
+                    painter = painterResource(id = R.drawable.plane),
+                    contentDescription = "Description")
+
+                Text(
+                    text = "Get Started!",
+                    textAlign = TextAlign.Center,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(horizontal = 60.dp)
+                )
+
+                NavigarionTabs(2)
+
+                Button(
+                    onClick = {navController.navigate("register")},
+                    modifier = Modifier.fillMaxWidth().height(50.dp).padding(horizontal = 40.dp),
+                    colors = ButtonColors(
+                        contentColor = Color.White, // -> No afecta en nada
+                        containerColor = Color.Transparent,
+                        disabledContentColor = Color.Gray,
+                        disabledContainerColor = Color.Gray
+                    ),
+                    border = BorderStroke(
+                        width = 1.dp,
+                        color = Color.Red
+                    )
+                ) {
+                    Text(
+                        text = "Registration",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "Already have an account? ",
+                        fontSize = 16.sp,
+                        color = Color.Gray,
+                        textAlign = TextAlign.Center,
+                    )
+                    Text(
+                        text = " Login",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Red,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.clickable {
+                            navController.navigate("login")
+                        }
+                    )
+                }
+
+            }
+        }
     }
 }

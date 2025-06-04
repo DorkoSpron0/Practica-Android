@@ -23,7 +23,21 @@ import com.example.project_1.view.ActivityOne.FirstPage
 import com.example.project_1.view.ActivityOne.Navigation
 import com.example.project_1.view.ActivityOne.SecondPage
 import com.example.project_1.view.ActivityOne.ThirdPage
+import com.example.project_1.view.ActivityThree.Contador
+import com.example.project_1.view.ActivityThree.EmailIcon
+import com.example.project_1.view.ActivityThree.EmailValidator
+import com.example.project_1.view.ActivityThree.IndicatorPassword
+import com.example.project_1.view.ActivityThree.LimitText
+import com.example.project_1.view.ActivityThree.TaskList
+import com.example.project_1.view.ActivityThree.ThemeChanger
+import com.example.project_1.view.ActivityThree.ValidateForm
+import com.example.project_1.view.ActivityThree.ValidateNumber
 import com.example.project_1.view.ActivityTwo.MyNavigation
+import com.example.project_1.view.transitions.Formulario
+import com.example.project_1.view.transitions.MyNavigationTransitions
+import com.example.project_1.view.transitions.TemaDinamico
+import com.example.project_1.viewmodel.ActivityThree.CargaSimulada
+import com.example.project_1.viewmodel.ActivityThree.ContadorViewModel
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -35,7 +49,23 @@ class MainActivity : ComponentActivity() {
                 Scaffold {
                     //HorizontalPages()
                     //MyNavigation()
-                    Navigation()
+                    //Navigation()
+                    //MyNavigationTransitions()
+                    //Formulario()
+                    //TemaDinamico()
+
+                    // ACTIVIDAD TRES
+
+                    //Contador()
+                    //EmailValidator()
+                    //ValidateNumber()
+                    //ThemeChanger()
+                    //IndicatorPassword()
+                    //ValidateForm()
+                    //TaskList()
+                    //LimitText()
+                    //EmailIcon()
+                    CargaSimulada()
                 }
             }
         }
