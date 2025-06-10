@@ -1,6 +1,7 @@
 package com.example.clientenotas.repository
 
 import com.example.clientenotas.data.local.Cliente
+import com.example.clientenotas.data.local.ClienteConNotas
 import com.example.clientenotas.data.local.ClienteDao
 import kotlinx.coroutines.flow.Flow
 
@@ -23,7 +24,8 @@ class ClienteRepository(private val dao: ClienteDao) {
         dao.deleteById(id)
     }
 
-    suspend fun getClienteConNotas(clienteId: Int){
-        dao.getClienteConNotas(clienteId)
+    fun getClienteConNotas(clienteId: Int): Flow<ClienteConNotas> {
+        return dao.getClienteConNotas(clienteId)
     }
+
 }

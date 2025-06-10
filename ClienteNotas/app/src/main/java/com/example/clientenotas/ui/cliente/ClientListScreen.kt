@@ -1,5 +1,6 @@
 package com.example.clientenotas.ui.cliente
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,6 +40,12 @@ fun ClientListScreen(viewModel: ClienteViewmodel, navController: NavController) 
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .clickable(
+                            enabled = true,
+                            onClick = {
+                                navController.navigate("clienteDetails/${clientes[index].id}")
+                            }
+                        )
                         .padding(vertical = 8.dp),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {

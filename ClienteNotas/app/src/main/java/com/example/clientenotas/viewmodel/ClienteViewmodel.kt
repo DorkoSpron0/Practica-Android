@@ -1,11 +1,15 @@
 package com.example.clientenotas.viewmodel
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.clientenotas.data.local.Cliente
+import com.example.clientenotas.data.local.ClienteConNotas
 import com.example.clientenotas.repository.ClienteRepository
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -16,6 +20,9 @@ class ClienteViewmodel(private val clienteRepository: ClienteRepository): ViewMo
         started = SharingStarted.WhileSubscribed(500),
         initialValue = emptyList()
     )
+
+    private val _clienteConNotas = MutableStateFlow<ClienteConNotas?>(null)
+    val clienteConNotas: StateFlow<ClienteConNotas?> = _clienteConNotas
 
     fun VMagregarCliente(title: String, correo: String) {
         val newCliente = Cliente(title = title, correo = correo);
@@ -43,9 +50,12 @@ class ClienteViewmodel(private val clienteRepository: ClienteRepository): ViewMo
         }
     }
 
-    fun VMgetClienteConNotas(clienteId: Int){
+    fun VMgetClienteConNotas(clienteId: Int) {
         viewModelScope.launch {
             clienteRepository.getClienteConNotas(clienteId)
+                .collect { resultado ->
+                    _clienteConNotas.value = resultado
+                }
         }
     }
 }
