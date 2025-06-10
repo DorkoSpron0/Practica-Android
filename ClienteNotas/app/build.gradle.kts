@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.proyecto_rom"
+    namespace = "com.example.clientenotas"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.proyecto_rom"
+        applicationId = "com.example.clientenotas"
         minSdk = 28
         targetSdk = 35
         versionCode = 1
@@ -42,15 +42,7 @@ android {
 
 dependencies {
 
-
-    // Forzar la versión correcta para evitar duplicados
-    configurations.all {
-        resolutionStrategy {
-            force("org.jetbrains:annotations:23.0.0")
-            exclude("com.intellij", "annotations")
-        }
-    }
-
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.viewmodel.ktx)
