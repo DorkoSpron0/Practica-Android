@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -64,6 +65,12 @@ fun ClientListScreen(viewModel: ClienteViewmodel, navController: NavController) 
                         text = clientes[index].correo,
                         color = androidx.compose.ui.graphics.Color.Gray
                     )
+
+                    IconButton(
+                        onClick = {
+                            viewModel.VMdeleteCliente(clientes[index])
+                        }
+                    ) { Text("Remove") }
                 }
             }
         }

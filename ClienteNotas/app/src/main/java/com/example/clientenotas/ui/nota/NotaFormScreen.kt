@@ -65,6 +65,13 @@ fun NotaFormScreen(notaViewModel: NotaViewModel, navController: NavController) {
                         navController.navigate("notasList")
                     }
                 ) { Text("Agregar Nota") }
+
+                Button(
+                    modifier = Modifier.fillMaxSize().padding(horizontal = 30.dp),
+                    onClick = {
+                        navController.navigate("notasList")
+                    }
+                ) { Text("Ver Nota") }
             }
         }
     }

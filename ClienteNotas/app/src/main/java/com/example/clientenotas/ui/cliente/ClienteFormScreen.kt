@@ -55,6 +55,13 @@ fun ClienteFormScreen(viewModel: ClienteViewmodel, navController: NavController)
                             navController.navigate("clientList")
                         }
                     ) { Text("Agregar cliente") }
+
+                    Button(
+                        modifier = Modifier.fillMaxSize().padding(horizontal = 30.dp),
+                        onClick = {
+                            navController.navigate("clientList")
+                        }
+                    ) { Text("Ver clientes") }
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.example.clientenotas.repository
 
+import com.example.clientenotas.data.local.ClienteConNotas
 import com.example.clientenotas.data.local.Nota
 import com.example.clientenotas.data.local.NotaDao
 import kotlinx.coroutines.flow.Flow
@@ -24,7 +25,7 @@ class NotaRepository(private val dao: NotaDao) {
         dao.getById(id)
     }
 
-    fun getNotasDeCliente(clienteId: Int){
-        dao.getNotasDeCliente(clienteId)
+    fun getNotasDeCliente(clienteId: Int): Flow<ClienteConNotas>{
+       return dao.getNotasDeCliente(clienteId)
     }
 }
