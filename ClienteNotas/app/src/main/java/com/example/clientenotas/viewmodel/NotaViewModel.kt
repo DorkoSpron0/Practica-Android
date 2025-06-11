@@ -51,10 +51,7 @@ class NotaViewModel(private val notaRepository: NotaRepository): ViewModel() {
 
     fun VMgetNotasDeCliente(clienteId: Int){
         viewModelScope.launch {
-            notaRepository.getNotasDeCliente(clienteId)
-                .collect { resultado ->
-                    _clienteConNotas.value = resultado
-                }
+            _clienteConNotas.value = notaRepository.getNotasDeCliente(clienteId)
         }
     }
 }

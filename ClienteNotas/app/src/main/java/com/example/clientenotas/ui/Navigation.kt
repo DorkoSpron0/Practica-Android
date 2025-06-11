@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.clientenotas.ui.cliente.ClientListScreen
 import com.example.clientenotas.ui.cliente.ClienteDetailsScreen
 import com.example.clientenotas.ui.cliente.ClienteFormScreen
+import com.example.clientenotas.ui.cliente.ClienteNotasDetailsScreen
 import com.example.clientenotas.ui.nota.NotaFormScreen
 import com.example.clientenotas.ui.nota.NotaListScreen
 import com.example.clientenotas.viewmodel.ClienteViewmodel
@@ -50,9 +51,18 @@ fun MyNavigationTransitions(clienteViewModel: ClienteViewmodel, notaViewModel: N
 
         composable("clienteDetails/{clienteId}") { backStackEntry ->
             val clienteId = backStackEntry.arguments?.getString("clienteId")
-            ClienteDetailsScreen(
+            ClienteNotasDetailsScreen(
                 navController = navController,
                 clienteViewmodel = clienteViewModel,
+                clienteId = clienteId
+            )
+        }
+
+        composable("cliente/{clienteId}") { backStackEntry ->
+            val clienteId = backStackEntry.arguments?.getString("clienteId")
+            ClienteDetailsScreen(
+                clienteViewmodel = clienteViewModel,
+                navController = navController,
                 clienteId = clienteId
             )
         }

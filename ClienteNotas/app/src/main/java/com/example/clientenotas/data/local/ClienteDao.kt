@@ -30,4 +30,7 @@ interface ClienteDao {
     @Transaction
     @Query("SELECT * FROM Cliente_TABLE WHERE id = :clienteId")
     fun getClienteConNotas(clienteId: Int): Flow<ClienteConNotas>
+
+    @Query("SELECT * FROM Cliente_TABLE WHERE id = :id")
+    suspend fun getById(id: Int): Cliente?
 }

@@ -29,5 +29,5 @@ interface NotaDao {
 
     @Transaction
     @Query("SELECT * FROM CLIENTE_TABLE WHERE id = :clienteId")
-    fun getNotasDeCliente(clienteId: Int): Flow<ClienteConNotas>
+    suspend fun getNotasDeCliente(clienteId: Int): ClienteConNotas?
 }

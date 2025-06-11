@@ -24,6 +24,9 @@ class ClienteViewmodel(private val clienteRepository: ClienteRepository): ViewMo
     private val _clienteConNotas = MutableStateFlow<ClienteConNotas?>(null)
     val clienteConNotas: StateFlow<ClienteConNotas?> = _clienteConNotas
 
+    private val _cliente = MutableStateFlow<Cliente?>(null)
+    val cliente: StateFlow<Cliente?> = _cliente
+
     fun VMagregarCliente(title: String, correo: String) {
         val newCliente = Cliente(title = title, correo = correo);
         viewModelScope.launch {
@@ -56,6 +59,12 @@ class ClienteViewmodel(private val clienteRepository: ClienteRepository): ViewMo
                 .collect { resultado ->
                     _clienteConNotas.value = resultado
                 }
+        }
+    }
+
+    fun VMgetClienteById(id: Int) {
+        viewModelScope.launch {
+            _cliente.value = clienteRepository.getClienteById(id)
         }
     }
 }

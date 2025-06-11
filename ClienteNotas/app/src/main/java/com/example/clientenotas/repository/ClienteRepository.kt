@@ -24,6 +24,10 @@ class ClienteRepository(private val dao: ClienteDao) {
         dao.deleteById(id)
     }
 
+    suspend fun getClienteById(id: Int): Cliente? {
+        return dao.getById(id)
+    }
+
     fun getClienteConNotas(clienteId: Int): Flow<ClienteConNotas> {
         return dao.getClienteConNotas(clienteId)
     }

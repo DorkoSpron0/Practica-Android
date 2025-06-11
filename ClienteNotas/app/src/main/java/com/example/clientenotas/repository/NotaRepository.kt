@@ -25,7 +25,7 @@ class NotaRepository(private val dao: NotaDao) {
         dao.getById(id)
     }
 
-    fun getNotasDeCliente(clienteId: Int): Flow<ClienteConNotas>{
-       return dao.getNotasDeCliente(clienteId)
+    suspend fun getNotasDeCliente(clienteId: Int): ClienteConNotas? {
+        return dao.getNotasDeCliente(clienteId)
     }
 }
